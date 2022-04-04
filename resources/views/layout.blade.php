@@ -73,6 +73,21 @@
                 </div>
             </li>
 
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#roomCollapse"
+                    aria-expanded="true" aria-controls="roomCollapse">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Room</span>
+                </a>
+                <div id="roomCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Room</h6>
+                        <a class="collapse-item" href="{{ route('room.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('room.index') }}">View All</a>
+                    </div>
+                </div>
+            </li>
 
 
 
