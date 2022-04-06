@@ -57,7 +57,7 @@
                 Masters
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Roomtype Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -66,14 +66,14 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom RoomType</h6>
+                        <h6 class="collapse-header">Manage RoomType</h6>
                         <a class="collapse-item" href="{{ route('roomtype.create') }}">Add New</a>
                         <a class="collapse-item" href="{{ route('roomtype.index') }}">View All</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Room Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#roomCollapse"
                     aria-expanded="true" aria-controls="roomCollapse">
@@ -82,9 +82,25 @@
                 </a>
                 <div id="roomCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Room</h6>
+                        <h6 class="collapse-header">Manage Room</h6>
                         <a class="collapse-item" href="{{ route('room.create') }}">Add New</a>
                         <a class="collapse-item" href="{{ route('room.index') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Customer Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customerCollapse"
+                    aria-expanded="true" aria-controls="customerCollapse">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Customer</span>
+                </a>
+                <div id="customerCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Customer</h6>
+                        <a class="collapse-item" href="{{ route('customer.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('customer.index') }}">View All</a>
                     </div>
                 </div>
             </li>
