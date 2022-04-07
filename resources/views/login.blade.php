@@ -47,17 +47,23 @@
                                             <p class="alert alert-danger">{{ session('message') }}</p>
                                         @endif
                                         <div class="form-group">
-                                            <input type="email" name="username" class="form-control form-control-user"
+                                            <input type="email" name="username" @if (Cookie::has('adminUserName'))
+                                            value="{{ Cookie::get('adminUserName') }}"
+                                        @endif class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address..." required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
+                                            <input type="password" name="password" @if (Cookie::has('adminPassword'))
+                                                value="{{ Cookie::get('adminPassword') }}"
+                                            @endif class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <input type="checkbox" name="remember_me" @if (Cookie::has('adminUserName'))
+                                                    checked
+                                                @endif class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember
                                                     Me</label>
                                             </div>

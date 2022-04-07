@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class AdminController extends Controller
 {
@@ -21,6 +22,12 @@ class AdminController extends Controller
         if($admin>0){
             $adminData = Admin::where(['username'=>$request->username,'password'=>sha1($request->password)])->get();
             session(['adminData'=>$adminData]);
+
+            //remember me
+            if($request->has('remember_me')){
+                Cookie::queue('adminUserName',$request->username,1440);
+                Cookie::queue('adminPassword',$request->password,1440);
+            };
             return redirect('admin');
         }else{
             return redirect()->route('admin.login')->with('message','Invalid username or password!!');
