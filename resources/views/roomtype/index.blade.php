@@ -31,6 +31,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
+                                <th>Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                                     <tr>
                                         <td>{{ $d->id }}</td>
                                         <td>{{ $d->title }}</td>
+                                        <td>{{ $d->price }}</td>
                                         <td>
                                             <a href="{{ route('roomtype.show',$d->id) }}" class="btn  btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('roomtype.edit',$d->id)  }}" class="btn  btn-success btn-sm"><i class="fas fa-edit"></i></a>

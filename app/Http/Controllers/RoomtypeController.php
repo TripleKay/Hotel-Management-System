@@ -38,6 +38,7 @@ class RoomtypeController extends Controller
     {
         $data = new RoomType;
         $data->title = $request->title;
+        $data->price = $request->price;
         $data->detail = $request->detail;
         $data->save();
         return redirect()->route('roomtype.create')->with('success','Data has been added');
@@ -78,6 +79,7 @@ class RoomtypeController extends Controller
     {
         $data = RoomType::find($id);
         $data->title = $request->title;
+        $data->price = $request->price;
         $data->detail = $request->detail;
         $data->update();
         return redirect()->route('roomtype.edit',$id)->with('success','Data has been updated');
