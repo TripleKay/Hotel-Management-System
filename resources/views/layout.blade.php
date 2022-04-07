@@ -9,8 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
-
+    <title>Adim</title>
+    @if (!Session::has('adminData'))
+        <script>
+            window.location.href="{{ route('admin.login') }}";
+        </script>
+    @endif
     @yield('head')
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -103,6 +107,13 @@
                         <a class="collapse-item" href="{{ route('customer.index') }}">View All</a>
                     </div>
                 </div>
+            </li>
+
+            <!-- logout-->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.logout') }}">
+                    <i class="fas fa-fw fa-lock"></i>
+                    <span>Logout</span></a>
             </li>
 
 

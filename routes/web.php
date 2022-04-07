@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
@@ -20,15 +21,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Adminlogin
+Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
+Route::post('admin/login',[AdminController::class,'checkLogin'])->name('admin.login');
+Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
+
+//dashboard
 Route::get('admin', function () {
     return view('dashboard');
 });
 
+//roomtype
 Route::get('admin/roomtype/{id}/delete',[RoomtypeController::class,'destroy'])->name('roomtype.delete');
 Route::resource('admin/roomtype',RoomtypeController::class);
 
+//room
 Route::get('admin/room/{id}/delete',[RoomController::class,'destroy'])->name('room.delete');
 Route::resource('admin/room',RoomController::class);
 
+//customer
 Route::get('admin/customer/{id}/delete',[CustomerController::class,'destroy'])->name('customer.delete');
 Route::resource('admin/customer',CustomerController::class);
+
