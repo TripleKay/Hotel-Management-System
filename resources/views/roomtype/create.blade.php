@@ -28,7 +28,7 @@
                     <p class="alert alert-success">{{ session('success') }}</p>
                 @endif
                 <div class="table-responsive">
-                    <form action="{{route('roomtype.store')}}" method="post">
+                    <form action="{{route('roomtype.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <table class="table table-bordered">
                             <thead>
@@ -43,6 +43,10 @@
                                 <tr>
                                     <th>Detail</th>
                                     <td><textarea name="detail" class="form-control" id="" ></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th>Gallery</th>
+                                    <td><input type="file" name="imgs[]" class="form-control" multiple></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">

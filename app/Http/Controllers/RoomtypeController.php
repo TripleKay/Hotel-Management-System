@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\RoomType;
+use App\Models\RoomtypeImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RoomtypeController extends Controller
 {
@@ -36,11 +38,28 @@ class RoomtypeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'detail' => 'required',
+        ]);
         $data = new RoomType;
         $data->title = $request->title;
         $data->price = $request->price;
         $data->detail = $request->detail;
         $data->save();
+
+        //multiple imgs
+        foreach($request->file('imgs') as $img){
+            $imgName = uniqid()."-".$img->getClientOriginalName();
+            $imgPath = $img->storeAs('public/imgs',$imgName);
+            $imgData = new RoomtypeImage;
+            $imgData->img_src = $imgName;
+            $imgData->img_alt = $request->title;
+            $imgData->room_type_id = $data->id;
+            $imgData->save();
+        }
+
         return redirect()->route('roomtype.create')->with('success','Data has been added');
     }
 
@@ -82,6 +101,19 @@ class RoomtypeController extends Controller
         $data->price = $request->price;
         $data->detail = $request->detail;
         $data->update();
+
+        //to add new multiple imgs
+        if($request->hasFile('imgs')){
+            foreach($request->file('imgs') as $img){
+                $imgName = uniqid()."-".$img->getClientOriginalName();
+                $imgPath = $img->storeAs('public/imgs',$imgName);
+                $imgData = new RoomtypeImage;
+                $imgData->img_src = $imgName;
+                $imgData->img_alt = $request->title;
+                $imgData->room_type_id = $data->id;
+                $imgData->save(); // to add new row to database (not update on existing row) so use save()
+            }
+        }
         return redirect()->route('roomtype.edit',$id)->with('success','Data has been updated');
 
     }
@@ -97,5 +129,14 @@ class RoomtypeController extends Controller
         $data = RoomType::find($id);
         $data->delete();
         return redirect()->route('roomtype.index',)->with('success','Data has been deleted');
+    }
+
+    //to delete roomtypesImages
+    public function destroyImage($id)
+    {
+        $data = RoomtypeImage::find($id);
+        Storage::disk('public')->delete("imgs/".$data->img_src);//to delete img from storage
+        $data->delete();//to delete from database
+        return response()->json(['bool'=>true]);
     }
 }

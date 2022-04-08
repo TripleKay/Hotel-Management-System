@@ -19,7 +19,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Add Roomtype</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ $data->title }}</h6>
                     <a href="{{ route('roomtype.index') }}" class="btn btn-primary">View All</a>
                 </div>
             </div>
@@ -40,6 +40,16 @@
                                 <tr>
                                     <th>Detail</th>
                                     <td>{{ $data->detail }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Gallery Images</th>
+                                    <td>
+                                        @foreach ($data->roomtypeImages as $img)
+                                        <div class="position-relative d-inline-block p-2 mr-2 mb-2 mt-3 image-box-{{ $img->id }}">
+                                            <img src="{{ asset('storage/imgs/'.$img->img_src) }}" class="rounded" style="width: 100px; height: 130px" alt="" srcset="">
+                                        </div>
+                                        @endforeach
+                                    </td>
                                 </tr>
 
                             </thead>
