@@ -61,7 +61,7 @@
                 Masters
             </div>
 
-            <!-- Nav Item - Roomtype Collapse Menu -->
+            <!-- Roomtype Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -77,7 +77,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Room Collapse Menu -->
+            <!-- Room Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#roomCollapse"
                     aria-expanded="true" aria-controls="roomCollapse">
@@ -93,7 +93,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Customer Collapse Menu -->
+            <!-- Customer Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customerCollapse"
                     aria-expanded="true" aria-controls="customerCollapse">
@@ -105,6 +105,38 @@
                         <h6 class="collapse-header">Manage Customer</h6>
                         <a class="collapse-item" href="{{ route('customer.create') }}">Add New</a>
                         <a class="collapse-item" href="{{ route('customer.index') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- StaffDepartment Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#departmentCollapse"
+                    aria-expanded="true" aria-controls="departmentCollapse">
+                    <i class="fas fa-fw fa-hotel"></i>
+                    <span>Staff Department</span>
+                </a>
+                <div id="departmentCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Department</h6>
+                        <a class="collapse-item" href="{{ route('department.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('department.index') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Staff Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staffCollapse"
+                    aria-expanded="true" aria-controls="staffCollapse">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Staff</span>
+                </a>
+                <div id="staffCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Staff</h6>
+                        <a class="collapse-item" href="{{ route('staff.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('staff.index') }}">View All</a>
                     </div>
                 </div>
             </li>
