@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffDepartmentController;
+use App\Models\StaffPayment;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,10 @@ Route::resource('admin/department',StaffDepartmentController::class);
 //staff
 Route::get('admin/staff/{id}/delete',[StaffController::class,'destroy'])->name('staff.delete');
 Route::resource('admin/staff',StaffController::class);
+
+//staffPayment
+Route::get('admin/staffPayment/{id}/',[StaffController::class,'allPayment'])->name('staffPayment.all');
+Route::get('admin/staffPayment/{id}/add',[StaffController::class,'createPayment'])->name('staffPayment.create');
+Route::post('admin/staffPayment/{id}/add',[StaffController::class,'storePayment'])->name('staffPayment.store');
+Route::get('admin/staffPayment/{id}/{staffId}/delete',[StaffController::class,'destroyPayment'])->name('staffPayment.delete');
+

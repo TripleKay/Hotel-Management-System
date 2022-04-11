@@ -18,8 +18,8 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h5 class="m-0 font-weight-bold text-primary">Room</h5>
-                <a href="{{ route('room.create') }}" class="btn btn-primary">Add New</a>
+                <h5 class="m-0 font-weight-bold text-primary">{{ $staff->full_name }} - Payment Lists</h5>
+                <a href="{{ route('staffPayment.create',$staffId) }}" class="btn btn-primary">Add New Payment</a>
             </div>
             <div class="card-body">
                 @if (Session::has('success'))
@@ -30,8 +30,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Roomtype</th>
+                                <th>Payment Amount</th>
+                                <th>Payment Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -41,12 +41,11 @@
                                 @foreach ($data as $d)
                                     <tr>
                                         <td>{{ $d->id }}</td>
-                                        <td>{{ $d->title }}</td>
-                                        <td>{{ $d->roomtype->title}}</td>
+                                        <td>{{ $d->amount}}</td>
+                                        <td>{{ $d->payment_date }}</td>
                                         <td>
-                                            <a href="{{ route('room.show',$d->id) }}" class="btn  btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('room.edit',$d->id)  }}" class="btn  btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('room.delete',$d->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('staff.edit',$d->id)  }}" class="btn  btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('staffPayment.delete',['id'=>$d->id,'staffId'=>$staffId]) }}" onclick="return confirm('Are you sure to delete?')" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

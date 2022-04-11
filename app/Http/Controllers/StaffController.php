@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use App\Models\StaffDepartment;
+use App\Models\StaffPayment;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 use function PHPSTORM_META\map;
 
@@ -141,4 +143,35 @@ class StaffController extends Controller
         $data->delete();
         return redirect()->route('staff.index',)->with('success','Data has been deleted');
     }
+
+
+    //to show all payment by staff
+    public function allPayment($staffId){
+        $data = StaffPayment::where('staff_id',$staffId)->get();
+        $staff = Staff::find($staffId);
+        return view('staffPayment.index',['staffId'=>$staffId,'data'=>$data,'staff'=>$staff]);//staffId for action(delete,create) , data for to show
+    }
+
+    //create staff Payment
+    public function createPayment($staffId){
+        return view('staffPayment.create',['staffId'=>$staffId]);
+    }
+
+    //to store staff Payment
+    public function storePayment(Request $request,$staffId){
+        $data = new StaffPayment;
+        $data->staff_id = $staffId;
+        $data->amount = $request->amount;
+        $data->payment_date = $request->payment_date;
+        $data->save();
+        return redirect()->route('staffPayment.create',$staffId)->with('success','Data has been added');
+    }
+
+    //to delete payment for each staff
+    public function destroyPayment($id,$staffId){
+        $payment = StaffPayment::find($id);
+        $payment->delete();
+        return redirect()->route('staffPayment.all',$staffId);
+    }
+
 }

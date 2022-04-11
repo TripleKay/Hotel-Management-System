@@ -47,7 +47,7 @@
                                         <td>
                                             <a href="{{ route('department.show',$d->id) }}" class="btn  btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('department.edit',$d->id)  }}" class="btn  btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('department.delete',$d->id) }}" onclick="confirm('Are you sure to delete?')" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('department.delete',$d->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

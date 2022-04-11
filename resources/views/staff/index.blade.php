@@ -48,9 +48,10 @@
                                         <td>{{ $d->salary_type }}</td>
                                         <td>{{ $d->salary_amt }}</td>
                                         <td>
+                                            <a href="{{ route('staffPayment.all',$d->id) }}" class="btn btn-primary btn-sm"><i class="far fa-credit-card"></i></a>
                                             <a href="{{ route('staff.show',$d->id) }}" class="btn  btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('staff.edit',$d->id)  }}" class="btn  btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('staff.delete',$d->id) }}" onclick="confirm('Are you sure to delete?')" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('staff.delete',$d->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
