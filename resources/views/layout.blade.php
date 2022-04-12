@@ -141,6 +141,22 @@
                 </div>
             </li>
 
+            <!-- Booking Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bookingCollapse"
+                    aria-expanded="true" aria-controls="bookingCollapse">
+                    <i class="fas fa-fw fa-hotel"></i>
+                    <span>Booking</span>
+                </a>
+                <div id="bookingCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Booking</h6>
+                        <a class="collapse-item" href="{{ route('booking.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('booking.index') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- logout-->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.logout') }}">
@@ -430,6 +446,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    
     <!-- Custom scripts for all pages-->
     @yield('foot')
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>

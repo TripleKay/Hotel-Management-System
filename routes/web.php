@@ -1,13 +1,14 @@
 <?php
+namespace App;
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RoomtypeController;
-use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffDepartmentController;
-use App\Models\StaffPayment;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +59,12 @@ Route::get('admin/staff/{id}/delete',[StaffController::class,'destroy'])->name('
 Route::resource('admin/staff',StaffController::class);
 
 //staffPayment
-Route::get('admin/staffPayment/{id}/',[StaffController::class,'allPayment'])->name('staffPayment.all');
-Route::get('admin/staffPayment/{id}/add',[StaffController::class,'createPayment'])->name('staffPayment.create');
-Route::post('admin/staffPayment/{id}/add',[StaffController::class,'storePayment'])->name('staffPayment.store');
-Route::get('admin/staffPayment/{id}/{staffId}/delete',[StaffController::class,'destroyPayment'])->name('staffPayment.delete');
+Route::get('admin/staff-payment/{id}/',[StaffController::class,'allPayment'])->name('staffPayment.all');
+Route::get('admin/staff-payment/{id}/add',[StaffController::class,'createPayment'])->name('staffPayment.create');
+Route::post('admin/staff-payment/{id}/add',[StaffController::class,'storePayment'])->name('staffPayment.store');
+Route::get('admin/staff-payment/{id}/{staffId}/delete',[StaffController::class,'destroyPayment'])->name('staffPayment.delete');
 
+//Booking
+Route::get('admin/booking/avaiable-rooms/{checkinDate}',[BookingController::class,'avaiableRooms'])->name('booking.avaiableRooms');
+Route::get('admin/booking/{id}/delete',[BookingController::class,'destroy'])->name('booking.delete');
+Route::resource('admin/booking',BookingController::class);
