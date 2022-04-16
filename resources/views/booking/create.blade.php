@@ -19,8 +19,8 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Add Customer</h6>
-                    <a href="{{ route('customer.index') }}" class="btn btn-primary">View All</a>
+                    <h6 class="m-0 font-weight-bold text-primary">Add New Booking</h6>
+                    <a href="{{ route('booking.index') }}" class="btn btn-primary">View All</a>
                 </div>
             </div>
             <div class="card-body">
@@ -28,7 +28,7 @@
                     <p class="alert alert-success">{{ session('success') }}</p>
                 @endif
                 <div class="table-responsive">
-                    <form action="{{route('booking.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('booking.store')}}" method="post" >
                         @csrf
 
                         <div class="form-group">
@@ -50,15 +50,15 @@
                         </div>
                         <div class="form-group">
                             <label for="">Total Adults</label>
-                            <input type="number" name="total_adults" class="form-control" required>
+                            <input type="number" name="totol_adults" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="">Total Children</label>
-                            <input type="number" name="total_childern" class="form-control" required>
+                            <input type="number" name="total_children" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="">Available Rooms</label>
-                            <select name="" id="" class="roomLists custom-select">
+                            <select name="room_id" id="" class="roomLists custom-select">
                                 <option value="0">Selelect Rooms</option>
                             </select>
                         </div>

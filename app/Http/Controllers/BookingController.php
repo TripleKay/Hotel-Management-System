@@ -39,7 +39,22 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Booking;
+        $request->validate([
+            'customer_id'=>'required',
+            'checkin_date'=>'required',
+            'checkout_date'=>'required',
+            'totol_adults'=>'required',
+            'room_id'=>'required'
+        ]);
+        $data->customer_id = $request->customer_id;
+        $data->checkin_date = $request->checkin_date;
+        $data->checkout_date = $request->checkout_date;
+        $data->totol_adults = $request->totol_adults;
+        $data->total_children = $request->total_children;
+        $data->room_id = $request->room_id;
+        $data->save();
+        return redirect()->route('booking.create')->with('success','Data has been added');
     }
 
     /**
